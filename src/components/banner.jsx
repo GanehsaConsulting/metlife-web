@@ -49,15 +49,6 @@ export const Banner = () => {
                         />
                     </div>
 
-                    {/* Stethoscope */}
-                    <div className="absolute bottom-32 right-8 z-10">
-                        <img
-                            src="/stetoscop.png"
-                            alt="Stethoscope"
-                            className="w-40 h-40 object-contain drop-shadow-2xl"
-                        />
-                    </div>
-
                     {/* 24 hour service badge */}
                     <div className="absolute bottom-16 left-50 bg-white/30 backdrop-blur-sm text-darkColor px-4 py-3 rounded-xl shadow-lg flex items-center gap-3 z-30">
                         <div className="w-10 h-10 bg-mainColor drop-shadow-2xl text-white rounded-full flex items-center justify-center">

@@ -103,13 +103,12 @@ export const VisionMission = () => {
                                 key={mission.id}
                                 className="bg-neutral-100 rounded-main p-4 hover:shadow-xl transition-all duration-300 hover:scale-105"
                             >
-                                <div className="text-center">
-                                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 mx-auto mb-4">
+                                <div className="md:text-center">
+                                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-blue-600 md:mx-auto mb-4">
                                         {mission.icon}
                                     </div>
-                                    <div className="flex items-center justify-center gap-2 mb-3">
-                                        <span className="text-sm font-bold text-gray-900">Misi {mission.id}</span>
-                                        <CheckCircle className="w-4 h-4 text-green-600" />
+                                    <div className="flex items-center md:justify-center gap-2 mb-3">
+                                        <span className="md:text-sm text-lg font-bold text-gray-900">Misi {mission.id}</span>
                                     </div>
                                     <p className="text-sm text-gray-700 leading-relaxed">
                                         {mission.text}

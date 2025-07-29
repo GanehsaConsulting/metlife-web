@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { IoIosFlower } from "react-icons/io";
+import { Menu, X } from "lucide-react";
 
 export const Navbar = ({ children }) => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,17 +21,111 @@ export const Navbar = ({ children }) => {
         };
     }, []);
 
-    const items = ["Beranda", "Tentang", "Visi Misi", "Keunggulan", "Produk",]
+    // Close mobile menu when clicking on a link
+    const handleMobileMenuClick = () => {
+        setIsMobileMenuOpen(false);
+    };
+
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
+
+    const items = ["Beranda", "Tentang", "Visi Misi", "Keunggulan", "Produk"];
 
     function urlFriendly(text) {
         return `${text.toLowerCase().replace(/\s+/g, '-')}`;
     }
+
     return (
         <>
-
             {/* Navbar Mobile */}
-            <div className={`md:hidden block text-white md:mx-10 navbar absolute top-1 left-0 right-0 w-auto md:px-2 rounded-full h-14 min-h-14 z-999`}>
-                <a className="px-4 py-2 bg-main/35 rounded-full text-md font-bold">PT. Medlife Abadi Jaya</a>
+            <div className={`md:hidden mt-3 mx-4 top-3 left-3 right-3 z-50 transition-all duration-300 ${isScrolled ? "bg-mainColor/50 backdrop-blur-sm shadow-lg sticky" : "bg-mainColor"} rounded-full`}>
+                <div className="flex items-center justify-between px-4 py-3">
+                    {/* Logo and Brand */}
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 flex items-center justify-center bg-white rounded-full text-black text-xl">
+                            <IoIosFlower />
+                        </div>
+                        <span className="text-white font-bold text-sm">PT. Medlife Abadi Jaya</span>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    {/* <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors duration-200"
+                    >
+                        {isMobileMenuOpen ? (
+                            <X className="w-5 h-5 text-white" />
+                        ) : (
+                            <Menu className="w-5 h-5 text-white" />
+                        )}
+                    </button> */}
+
+                    <div className="dropdown dropdown-left dropdown-bottom">
+                        <div tabIndex={0} role="button" className="w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors duration-200">
+                            <Menu className="w-5 h-5 text-white" />
+                        </div>
+                        <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2 shadow-sm">
+                            <div className="px-4 space-y-1">
+                                {items.map((item, id) => (
+                                    <a
+                                        key={item}
+                                        href={id === 0 ? "#beranda" : `#${urlFriendly(item)}`}
+                                        onClick={handleMobileMenuClick}
+                                        className="block px-4 py-3 text-gray-800 font-medium hover:bg-gray-100 rounded-xl transition-colors duration-200"
+                                    >
+                                        {item}
+                                    </a>
+                                ))}
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Mobile Menu Overlay */}
+                {isMobileMenuOpen && (
+                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={() => setIsMobileMenuOpen(false)} />
+                )}
+
+                {/* Mobile Menu */}
+                <div className={`fixed top-20 left-3 right-3 bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 transform z-50 ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0 pointer-events-none'
+                    }`}>
+                    <div className="py-4">
+                        {/* Navigation Items */}
+                        <div className="px-4 space-y-1">
+                            {items.map((item, id) => (
+                                <a
+                                    key={item}
+                                    href={id === 0 ? "#beranda" : `#${urlFriendly(item)}`}
+                                    onClick={handleMobileMenuClick}
+                                    className="block px-4 py-3 text-gray-800 font-medium hover:bg-gray-100 rounded-xl transition-colors duration-200"
+                                >
+                                    {item}
+                                </a>
+                            ))}
+                        </div>
+
+                        {/* Contact Button */}
+                        <div className="px-4 mt-4 pt-4 border-t border-gray-200">
+                            <a
+                                href="#contact"
+                                onClick={handleMobileMenuClick}
+                                className="block w-full px-4 py-3 bg-mainColor text-white font-medium text-center rounded-xl hover:bg-mainColor/90 transition-colors duration-200"
+                            >
+                                Contact Us!
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* Navbar Desktop */}
@@ -67,8 +163,6 @@ export const Navbar = ({ children }) => {
                     </a>
                 </div>
             </div>
-
-
 
             <div className="">
                 {children}

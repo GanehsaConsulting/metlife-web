@@ -12,7 +12,7 @@ export default function MedicalFooter() {
     return (
         <footer className="bg-base text-white">
             {/* Main Footer Content */}
-            <div className="mx-16 px-6 py-12">
+            <div className="mx-4 md:mx-16 md:px-6 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-15">
 
                     {/* Company Logo & Info */}

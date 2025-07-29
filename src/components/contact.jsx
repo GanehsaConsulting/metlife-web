@@ -67,7 +67,7 @@ export const ContactSection = () => {
                     {contactInfo.map((info, index) => (
                         <div
                             key={index}
-                            className={`group bg-white border-2 rounded-2xl p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer border-mainColor text-black`}
+                            className={`group bg-white border-2 rounded-main p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer border-mainColor text-black`}
                             onClick={() => handleContactClick(info.action, info.content)}
                         >
                             <div className="text-left">
@@ -90,7 +90,7 @@ export const ContactSection = () => {
                 </div>
 
                 {/* Map Section */}
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div className="bg-white rounded-main shadow-lg overflow-hidden">
                     <div className="p-6 text-center border-b border-gray-100">
                         <h3 className="text-2xl font-bold text-gray-900 mb-2">
                             Lokasi Kami
