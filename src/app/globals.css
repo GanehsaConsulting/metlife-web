@@ -1,10 +1,47 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Color */
+  --color-mainColor: #5454ff; /* Warna utama solid */
+  --color-secondaryColor: #9e9eff; /* Warna utama yang lebih soft */
+  --color-thirdColor: #d5d5ff; /* Aksen tambahan */
+  --color-otherMuted: #f1ddf9; /* Warna latar / background lembut */
+
+  --color-base: #040026; /* Base putih */
+  --color-surface: #18143A; /* Latar komponen */
+  --color-border: #e3e3e3;
+  --color-darkColor: #252525; /* Warna teks utama */
+  --color-darkColorTwo: #333333; /* Teks lebih redup */
+
+  /* Border Radius */
+  --radius-main: 30px;
+  --radius-secondary: 25px;
+  --radius-third: 20px;
+  --radius-btnMain: 10px;
+  --radius-btnSecondary: 7px;
+
+  /* BoxShadow */
+  --shadow-custom: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  --shadow-mainShadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --shadow-secondaryShadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --shadow-white: rgba(255, 255, 255, 0.662) 0px 4px 16px,
+    rgba(255, 255, 255, 0.616) 0px 8px 32px;
+  --shadow-black: rgba(0, 0, 0, 0.258) 0px 4px 16px,
+    rgba(0, 0, 0, 0.268) 0px 8px 32px;
 }
 
+:root {
+  background: #ffffff;
+}
+
+.bg-root {
+  @apply bg-white;
+}
+body {
+  @apply bg-white text-neutral-700;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,7 +49,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -23,4 +60,50 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.patternSquare {
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 100;
+  background-image: linear-gradient(#d5d5ff18 1.3px, transparent 1.3px),
+    linear-gradient(to right, #d5d5ff18 1.3px, #00000000 0px);
+  background-size: 45px 45px;
+}
+
+/* Hide Desktop Scrollbar */
+@media (min-width: 768px) {
+  /* Untuk desktop dan tablet besar */
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
+  html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+}
+
+#beranda {
+  @apply scroll-mt-5 md:scroll-mt-[-10px]; /* ≈ 112px */
+}
+
+#tentang {
+  @apply scroll-mt-5 md:scroll-mt-28; /* ≈ 112px */
+}
+
+#visi-misi {
+  @apply scroll-mt-5 md:scroll-mt-28; /* ≈ 100px intended */
+}
+
+#keunggulan {
+  @apply scroll-mt-5 md:scroll-mt-10; /* 20px */
+}
+
+#produk {
+  @apply scroll-mt-5 md:scroll-mt-10; /* 10px */
+}
+
+#contact {
+  @apply scroll-mt-5 md:scroll-mt-10; /* 10px */
 }
