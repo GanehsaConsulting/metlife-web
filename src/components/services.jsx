@@ -13,6 +13,7 @@ import {
     Grid3X3,
     List
 } from 'lucide-react';
+import AnimateOnScroll from './animate-on-scroll';
 
 // Separate products data for better organization
 const PRODUCTS_DATA = {
@@ -390,9 +391,9 @@ export const ServicesCarousel = () => {
     );
 
     return (
-        <section  id="produk" className="py-16 px-4 bg-white">
+        <section id="produk" className="py-16 px-4 bg-white">
             <div className="max-w-7xl mx-auto">
-               {/* Section Header */}
+                {/* Section Header */}
                 <div className="mb-16">
                     <h2 className="text-4xl md:text-5xl font-semibold tracking-tighter text-gray-900 mb-2">
                         Produk Kami
@@ -401,60 +402,62 @@ export const ServicesCarousel = () => {
                 </div>
 
                 {/* Services Cards */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {SERVICE_CATEGORIES.map((service) => (
-                        <div
-                            key={service.id}
-                            className={`group cursor-pointer w-full bg-white border-2 rounded-main overflow-hidden transition-all duration-200 hover:shadow-lg ${getColorClasses(service.color)}`}
-                            onClick={() => handleCategoryClick(service.title)}
-                        >
-                            {/* Image */}
-                            <div className="relative h-85 bg-gray-100 overflow-hidden">
-                                <img
-                                    src={service.image}
-                                    alt={service.title}
-                                    className="w-full h-full object-cover"
-                                    onError={(e) => {
-                                        e.target.style.display = 'none';
-                                        e.target.nextSibling.style.display = 'flex';
-                                    }}
-                                />
-                                <div className="hidden w-full h-full bg-gray-200 items-center justify-center">
-                                    <Package className="w-12 h-12 text-gray-400" />
+                <AnimateOnScroll once={false} animation="blurInUp" duration={0.5} delay={0}>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {SERVICE_CATEGORIES.map((service) => (
+                            <div
+                                key={service.id}
+                                className={`group cursor-pointer w-full bg-white border-2 rounded-main overflow-hidden transition-all duration-200 hover:shadow-lg ${getColorClasses(service.color)}`}
+                                onClick={() => handleCategoryClick(service.title)}
+                            >
+                                {/* Image */}
+                                <div className="relative h-85 bg-gray-100 overflow-hidden">
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="w-full h-full object-cover"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            e.target.nextSibling.style.display = 'flex';
+                                        }}
+                                    />
+                                    <div className="hidden w-full h-full bg-gray-200 items-center justify-center">
+                                        <Package className="w-12 h-12 text-gray-400" />
+                                    </div>
+
+                                    {/* Icon */}
+                                    <div className="absolute top-3 right-3 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
+                                        <div className={getIconColor(service.color)}>
+                                            {service.icon}
+                                        </div>
+                                    </div>
                                 </div>
 
-                                {/* Icon */}
-                                <div className="absolute top-3 right-3 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-                                    <div className={getIconColor(service.color)}>
-                                        {service.icon}
+                                {/* Content */}
+                                <div className="p-4">
+                                    <h3 className="text-base font-bold text-gray-900 mb-2">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                                        {service.description}
+                                    </p>
+
+                                    {/* Product Count */}
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-xs text-gray-500">
+                                            {getTotalProductCount(service.title)} Produk
+                                        </span>
+                                        <ChevronRight className="w-4 h-4 text-gray-400" />
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Content */}
-                            <div className="p-4">
-                                <h3 className="text-base font-bold text-gray-900 mb-2">
-                                    {service.title}
-                                </h3>
-                                <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                                    {service.description}
-                                </p>
-
-                                {/* Product Count */}
-                                <div className="flex items-center justify-between">
-                                    <span className="text-xs text-gray-500">
-                                        {getTotalProductCount(service.title)} Produk
-                                    </span>
-                                    <ChevronRight className="w-4 h-4 text-gray-400" />
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                </AnimateOnScroll>
 
                 {/* Product Modal */}
                 {showProducts && selectedCategory && (
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-999 flex items-center justify-center p-4">
                         <div className="bg-white rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
                             {/* Modal Header */}
                             <div className="bg-gradient-to-r from-mainColor to-secondaryColor text-white p-6">
@@ -485,7 +488,7 @@ export const ServicesCarousel = () => {
                                             className="w-full pl-10 pr-4 py-2 bg-white/20 border border-white/30 rounded-full text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
                                         />
                                     </div>
-                                    <div className="flex bg-white/20 rounded-full p-1">
+                                    <div className="hidden md:flex bg-white/20 rounded-full p-1">
                                         <button
                                             onClick={() => setViewMode('grid')}
                                             className={`p-2 rounded-full transition-colors duration-300 ${viewMode === 'grid' ? 'bg-white/30' : 'hover:bg-white/20'}`}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { IoIosFlower } from "react-icons/io";
 import { Menu, X } from "lucide-react";
 
-export const Navbar = ({ children }) => {
+export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -58,17 +58,6 @@ export const Navbar = ({ children }) => {
                         <span className="text-white font-bold text-sm">PT. Medlife Abadi Jaya</span>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    {/* <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors duration-200"
-                    >
-                        {isMobileMenuOpen ? (
-                            <X className="w-5 h-5 text-white" />
-                        ) : (
-                            <Menu className="w-5 h-5 text-white" />
-                        )}
-                    </button> */}
 
                     <div className="dropdown dropdown-left dropdown-bottom">
                         <div tabIndex={0} role="button" className="w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors duration-200">
@@ -162,10 +151,6 @@ export const Navbar = ({ children }) => {
                         Contact Us!
                     </a>
                 </div>
-            </div>
-
-            <div className="">
-                {children}
             </div>
         </>
     )
