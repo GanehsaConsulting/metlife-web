@@ -54,10 +54,12 @@ export const Banner = () => {
                         <div className="w-10 h-10 bg-mainColor drop-shadow-2xl text-white rounded-full flex items-center justify-center">
                             <PhoneCall className="w-5 h-5" />
                         </div>
-                        <div>
-                            <p className="text-xs text-darkColorTwo">24 hour service</p>
-                            <p className="text-sm font-medium">(302) 555-0107</p>
-                        </div>
+                        <a
+                            href='https://wa.me/6282246222302'
+                        >
+                            <p className="text-xs text-darkColorTwo">Contact service</p>
+                            <p className="text-sm font-medium">(+62) 82246222302</p>
+                        </a>
                     </div>
                 </div>
             </div>

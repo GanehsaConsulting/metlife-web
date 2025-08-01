@@ -41,7 +41,7 @@ export const VisionMission = () => {
     ];
 
     return (
-        <section  id="visi-misi" className="py-20 px-4 bg-white">
+        <section id="visi-misi" className="py-20 px-4 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="mb-16">
@@ -67,9 +67,7 @@ export const VisionMission = () => {
 
                         {/* Vision Content */}
                         <p className="text-gray-700 leading-relaxed">
-                            Menjadi perusahaan distributor yang selalu memberikan pelayanan dan produk
-                            berkualitas kelas dunia dengan teknologi terkini dan memberikan layanan unggul
-                            dan terpercaya yang selalu diandalkan untuk meningkatkan taraf hidup masyarakat Indonesia
+                            Menjadi perusahaan distributor alat kesehatan yang menyediakan produk berkualitas kelas dunia dengan teknologi terkini serta memberikan pelayanan yang terbaik dan terpercaya.
                         </p>
                     </div>
 

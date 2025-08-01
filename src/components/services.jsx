@@ -11,11 +11,11 @@ import {
     Package,
     Search,
     Grid3X3,
-    List
+    List,
+    Eye
 } from 'lucide-react';
 import AnimateOnScroll from './animate-on-scroll';
 
-// Separate products data for better organization
 const PRODUCTS_DATA = {
     "Antiseptik & Disinfektan": [
         {
@@ -271,7 +271,73 @@ const PRODUCTS_DATA = {
             imgProducts: "/Bracket Dinding (Pembelian).jpg",
             variants: ["Single", "Double", "Triple", "Custom"],
             brand: "Display Solutions"
+        }
+    ],
+    "BMHP (Bahan Medis Habis Pakai)": [
+        {
+            id: 32,
+            name: "Eyedrape",
+            description: "Drape mata sekali pakai untuk prosedur operasi mata, steril dan berkualitas tinggi",
+            imgProducts: "",
+            variants: ["Standard", "Adhesive", "Fenestrated"],
+            brand: "Ophthalmic Supplies"
         },
+        {
+            id: 33,
+            name: "Lensa Monofocal (IOL)",
+            description: "Intraocular lens monofocal untuk penggantian lensa mata pada operasi katarak",
+            imgProducts: "",
+            variants: ["Hydrophobic", "Hydrophilic", "Aspheric", "Spheric"],
+            brand: "Ophthalmic Implants"
+        },
+        {
+            id: 34,
+            name: "Slit Knife (Keratome)",
+            description: "Pisau bedah mata untuk membuat sayatan kornea dalam operasi katarak",
+            imgProducts: "",
+            variants: ["2.75mm", "3.0mm", "3.2mm", "3.5mm"],
+            brand: "Surgical Instruments"
+        },
+        {
+            id: 35,
+            name: "Ophthalmic Viscosurgical Device (OVD)",
+            description: "Zat viskoelastik untuk proteksi jaringan mata selama operasi oftalmologi",
+            imgProducts: "",
+            variants: ["Cohesive", "Dispersive", "Adaptive", "Ultrapure"],
+            brand: "Ophthalmic Solutions"
+        },
+        {
+            id: 36,
+            name: "Instrument Bedah Katarak",
+            description: "Set instrumen bedah lengkap khusus untuk operasi katarak",
+            imgProducts: "",
+            variants: ["Basic Set", "Advanced Set", "Premium Set"],
+            brand: "Cataract Surgical"
+        },
+        {
+            id: 37,
+            name: "Instrument Bedah Retina",
+            description: "Set instrumen bedah mikro untuk operasi retina dan vitreoretinal",
+            imgProducts: "",
+            variants: ["Vitrectomy Set", "Membrane Peeling Set", "Retinal Detachment Set"],
+            brand: "Retinal Surgical"
+        },
+        {
+            id: 38,
+            name: "Instrument Bedah Glaukoma",
+            description: "Instrumen bedah khusus untuk operasi glaukoma dan prosedur drainage",
+            imgProducts: "",
+            variants: ["Trabeculectomy Set", "Tube Shunt Set", "MIGS Set"],
+            brand: "Glaucoma Surgical"
+        },
+        {
+            id: 39,
+            name: "Instrument Bedah Kornea",
+            description: "Set instrumen untuk transplantasi kornea dan operasi refraktif",
+            imgProducts: "",
+            variants: ["PKP Set", "DALK Set", "DSEK Set", "DMEK Set"],
+            brand: "Corneal Surgical"
+        }
     ]
 };
 
@@ -307,6 +373,14 @@ const SERVICE_CATEGORIES = [
         icon: <Plus className="w-6 h-6" />,
         color: "orange",
         image: "P3K.jpg"
+    },
+    {
+        id: 5,
+        title: "BMHP (Bahan Medis Habis Pakai)",
+        description: "Bahan medis habis pakai untuk prosedur operasi mata dan oftalmologi",
+        icon: <Eye className="w-6 h-6" />,
+        color: "pink",
+        image: "P3K.jpg"
     }
 ];
 
@@ -321,7 +395,8 @@ export const ServicesCarousel = () => {
             blue: "border-blue-200 hover:border-blue-400",
             green: "border-green-200 hover:border-green-400",
             purple: "border-purple-200 hover:border-purple-400",
-            orange: "border-orange-200 hover:border-orange-400"
+            orange: "border-orange-200 hover:border-orange-400",
+            pink: "border-pink-200 hover:border-pink-400",
         };
         return colorMap[color];
     };
@@ -331,7 +406,8 @@ export const ServicesCarousel = () => {
             blue: "text-blue-600",
             green: "text-green-600",
             purple: "text-purple-600",
-            orange: "text-orange-600"
+            orange: "text-orange-600",
+            pink: "text-pink-600",
         };
         return colorMap[color];
     };
@@ -403,7 +479,7 @@ export const ServicesCarousel = () => {
 
                 {/* Services Cards */}
                 <AnimateOnScroll once={false} animation="blurInUp" duration={0.5} delay={0}>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {SERVICE_CATEGORIES.map((service) => (
                             <div
                                 key={service.id}
