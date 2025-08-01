@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { IoIosFlower } from "react-icons/io";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -52,8 +53,13 @@ export const Navbar = () => {
                 <div className="flex items-center justify-between px-4 py-3">
                     {/* Logo and Brand */}
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 flex items-center justify-center bg-white rounded-full text-black text-xl">
-                            <IoIosFlower />
+                        <div className="w-8 h-8 flex items-center justify-center bg-white rounded-full">
+                            <Image
+                                width={100}
+                                height={100}
+                                src="/logo.png"
+                                alt="Medlife Logo"
+                            />
                         </div>
                         <span className="text-white font-bold text-sm">PT. Medlife Abadi Jaya</span>
                     </div>
@@ -122,8 +128,14 @@ export const Navbar = () => {
                 ${isScrolled ? "md:mx-24 bg-mainColor/50 md:sticky shadow-custom border border-base/10 backdrop-blur-sm top-1" : "bg-mainColor"}
                 `}>
                 <div className="navbar-start">
-                    <div className="-mr-1 w-9 h-9 flex items-center justify-center bg-white rounded-full text-black text-3xl">
-                        <IoIosFlower />
+                    <div className="-mr-1 w-9 h-9 flex items-center justify-center bg-white rounded-full">
+                        <Image
+                            width={100}
+                            height={100}
+                            src="/logo.png"
+                            alt="Medlife Logo"
+                            className="w-11 h-11 object-cover"
+                        />
                     </div>
                     <a className="px-4 py-2 bg-main/15 rounded-full text-md font-bold">PT. Medlife Abadi Jaya</a>
                 </div>

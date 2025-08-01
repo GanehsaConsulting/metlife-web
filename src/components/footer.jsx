@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Phone } from 'lucide-react';
 import { IoIosFlower } from "react-icons/io";
+import Image from 'next/image';
 
 
 export default function MedicalFooter() {
@@ -17,9 +18,15 @@ export default function MedicalFooter() {
 
                     {/* Company Logo & Info */}
                     <div className="lg:col-span-1">
-                        <div className="flex items-center mb-4">
-                            <div className="bg-white p-2 rounded-full mr-3">
-                                <IoIosFlower className="h-6 w-6 text-[#5454ff]" />
+                        <div className="flex md:flex-row flex-col gap-4 md:gap-0 md:items-center mb-4">
+                            <div className="bg-white w-17 h-17 flex items-center justify-center rounded-full mr-3">
+                                <Image
+                                    width={100}
+                                    height={100}
+                                    src="/logo.png"
+                                    alt="Medlife Logo"
+                                    className='w-19 h-19 object-cover'
+                                 />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">PT. Medlife Abadi Jaya</h3>
