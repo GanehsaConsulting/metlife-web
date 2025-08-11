@@ -273,7 +273,7 @@ const PRODUCTS_DATA = {
             brand: "Display Solutions"
         }
     ],
-    "BMHP (Bahan Medis Habis Pakai)": [
+    "Produk Mata": [
         {
             id: 32,
             name: "Eyedrape",
