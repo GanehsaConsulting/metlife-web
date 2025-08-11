@@ -380,7 +380,7 @@ const SERVICE_CATEGORIES = [
         description: "Bahan medis habis pakai untuk prosedur operasi mata dan oftalmologi",
         icon: <Eye className="w-6 h-6" />,
         color: "pink",
-        image: "P3K.jpg"
+        image: "eye.jpeg"
     }
 ];
 
