@@ -376,7 +376,7 @@ const SERVICE_CATEGORIES = [
     },
     {
         id: 5,
-        title: "BMHP (Bahan Medis Habis Pakai)",
+        title: "Produk Mata",
         description: "Bahan medis habis pakai untuk prosedur operasi mata dan oftalmologi",
         icon: <Eye className="w-6 h-6" />,
         color: "pink",
@@ -511,7 +511,7 @@ export const ServicesCarousel = () => {
 
                                 {/* Content */}
                                 <div className="p-4">
-                                    <h3 className="text-base font-bold text-gray-900 mb-2">
+                                    <h3 className="font-bold text-gray-900 mb-2">
                                         {service.title}
                                     </h3>
                                     <p className="text-sm text-gray-600 leading-relaxed mb-3">
